@@ -86,3 +86,28 @@ ALLOW_DEV_PAYMENT_BYPASS="true"  # hanya development
 | `/admin/orders` | Kelola pesanan |
 | `/admin/reports` | Laporan mingguan |
 | `/admin/settings` | Jam operasional |
+
+## Deploy ke Vercel
+
+1. Buat database PostgreSQL hosted (Neon, Supabase, atau Vercel Postgres).
+2. Di **Vercel → Project → Settings → Environment Variables**, set:
+
+| Variable | Contoh |
+|----------|--------|
+| `DATABASE_URL` | `postgresql://user:pass@host/db?sslmode=require` |
+| `AUTH_SECRET` | random string (`openssl rand -base64 32`) |
+| `AUTH_URL` | `https://your-app.vercel.app` |
+| `MIDTRANS_SERVER_KEY` | key Midtrans |
+| `MIDTRANS_CLIENT_KEY` | key Midtrans |
+| `MIDTRANS_IS_PRODUCTION` | `false` (sandbox) atau `true` |
+| `NEXT_PUBLIC_MIDTRANS_IS_PRODUCTION` | sama dengan di atas |
+| `ALLOW_DEV_PAYMENT_BYPASS` | `false` |
+
+3. Push ke GitHub dan deploy. Build menjalankan `prisma migrate deploy` otomatis.
+4. Setelah deploy pertama, seed database (jalankan lokal dengan `DATABASE_URL` production):
+
+```bash
+DATABASE_URL="postgresql://..." npm run db:seed
+```
+
+**Catatan:** Jangan pakai `localhost` di `DATABASE_URL` Vercel — database harus bisa diakses dari internet.

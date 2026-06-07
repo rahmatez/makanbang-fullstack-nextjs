@@ -2,6 +2,8 @@ import { signOut } from "@/lib/auth";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminMobileNav } from "@/components/admin/admin-mobile-nav";
 
+export const dynamic = "force-dynamic";
+
 async function handleSignOut() {
   "use server";
   await signOut({ redirectTo: "/" });

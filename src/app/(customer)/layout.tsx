@@ -3,6 +3,8 @@ import { CustomerFooter } from "@/components/customer/customer-footer";
 import { BottomNav } from "@/components/customer/bottom-nav";
 import { FloatingChatButton } from "@/components/customer/floating-chat-button";
 
+export const dynamic = "force-dynamic";
+
 export default function CustomerLayout({
   children,
 }: {
