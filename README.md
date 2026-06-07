@@ -103,10 +103,11 @@ ALLOW_DEV_PAYMENT_BYPASS="true"  # hanya development
 | `NEXT_PUBLIC_MIDTRANS_IS_PRODUCTION` | sama dengan di atas |
 | `ALLOW_DEV_PAYMENT_BYPASS` | `false` |
 
-3. Push ke GitHub dan deploy. Build menjalankan `prisma migrate deploy` otomatis.
-4. Setelah deploy pertama, seed database (jalankan lokal dengan `DATABASE_URL` production):
+3. Push ke GitHub dan deploy. Pastikan `DATABASE_URL` sudah diset di Vercel **sebelum** deploy agar migration otomatis jalan saat build.
+4. Jika build sukses tapi migration belum jalan, jalankan manual:
 
 ```bash
+DATABASE_URL="postgresql://..." npm run db:deploy
 DATABASE_URL="postgresql://..." npm run db:seed
 ```
 
