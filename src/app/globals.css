@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-cream: var(--brand-cream);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(0.985 0.006 95);
+  --foreground: oklch(0.22 0.02 145);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 145);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 145);
+  --primary: oklch(0.45 0.12 145);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.965 0.012 95);
+  --secondary-foreground: oklch(0.32 0.06 145);
+  --muted: oklch(0.965 0.008 95);
+  --muted-foreground: oklch(0.5 0.02 145);
+  --accent: oklch(0.955 0.025 145);
+  --accent-foreground: oklch(0.32 0.08 145);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.008 95);
+  --input: oklch(0.92 0.008 95);
+  --ring: oklch(0.45 0.12 145);
+  --brand: oklch(0.45 0.12 145);
+  --brand-light: oklch(0.955 0.028 145);
+  --brand-dark: oklch(0.32 0.09 145);
+  --brand-cream: oklch(0.985 0.006 95);
+  --chart-1: oklch(0.45 0.12 145);
+  --chart-2: oklch(0.55 0.1 85);
+  --chart-3: oklch(0.38 0.08 145);
+  --chart-4: oklch(0.72 0.12 85);
+  --chart-5: oklch(0.32 0.07 145);
+  --radius: 0.875rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.22 0.02 145);
+  --sidebar-primary: oklch(0.45 0.12 145);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.955 0.028 145);
+  --sidebar-accent-foreground: oklch(0.32 0.08 145);
+  --sidebar-border: oklch(0.92 0.008 95);
+  --sidebar-ring: oklch(0.45 0.12 145);
+}
+
+.dark {
+  --background: oklch(0.18 0.02 145);
+  --foreground: oklch(0.96 0.01 95);
+  --card: oklch(0.22 0.02 145);
+  --card-foreground: oklch(0.96 0.01 95);
+  --primary: oklch(0.52 0.12 145);
+  --primary-foreground: oklch(0.99 0 0);
+  --brand: oklch(0.52 0.12 145);
+  --brand-light: oklch(0.28 0.04 145);
+  --brand-dark: oklch(0.62 0.13 145);
+  --brand-cream: oklch(0.18 0.02 145);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.mesh-bg {
+  background-color: var(--brand-cream);
+  background-image:
+    radial-gradient(at 0% 0%, oklch(0.45 0.12 145 / 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, oklch(0.72 0.12 85 / 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, oklch(0.45 0.12 145 / 0.04) 0px, transparent 50%);
+}
+
+.glass {
+  @apply border border-white/60 bg-white/75 shadow-[0_1px_0_0_rgba(255,255,255,0.8)_inset] backdrop-blur-xl;
+}
+
+.surface-card {
+  @apply rounded-2xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)] ring-1 ring-black/[0.04];
+}
+
+.surface-card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_16px_40px_rgba(0,0,0,0.08)];
+}
+
+.text-gradient-brand {
+  @apply bg-linear-to-r from-brand-dark via-primary to-brand-dark bg-clip-text text-transparent;
+}
+
+.hero-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, oklch(1 0 0 / 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 80%, oklch(0.72 0.12 85 / 0.15) 0%, transparent 55%),
+    linear-gradient(135deg, oklch(0.32 0.09 145) 0%, oklch(0.45 0.12 145) 45%, oklch(0.38 0.1 155) 100%);
+}
+
+.chip {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 oklch(0.45 0.12 145 / 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 12px oklch(0.45 0.12 145 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.45 0.12 145 / 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
